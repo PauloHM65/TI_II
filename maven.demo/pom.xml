@@ -3,12 +3,24 @@
   <groupId>ex</groupId>
   <artifactId>maven.demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-	<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-	<dependency>
-    	<groupId>org.postgresql</groupId>
-    	<artifactId>postgresql</artifactId>
-    	<version>42.7.5</version>
-	</dependency>
+<dependencies>
+  <!-- Spark Java Web Framework -->
+  <dependency>
+    <groupId>com.sparkjava</groupId>
+    <artifactId>spark-core</artifactId>
+    <version>2.9.4</version>
+  </dependency>
+
+  <!-- PostgreSQL (se for usar banco de dados) -->
+  <dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.7.5</version>
+  </dependency>
+  <dependency>
+  	<groupId>com.google.code.gson</groupId>
+  	<artifactId>gson</artifactId>
+  	<version>2.10.1</version>
+  </dependency>
   </dependencies>
 </project>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza CRUD</title>
+</head>
+<body>
+    <h1>Pizza CRUD</h1>
+
+    <!-- Formulário de Criação de Pizza -->
+    <h2>Adicionar Pizza</h2>
+    <form id="insertPizzaForm">
+        <label for="codigo">Código:</label>
+        <input type="number" id="codigo" name="codigo" required>
+        <br><br>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br><br>
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" required>
+        <br><br>
+        <button type="submit">Adicionar Pizza</button>
+    </form>
+
+    <hr>
+
+    <!-- Formulário de Busca por Pizza -->
+    <h2>Buscar Pizza por ID</h2>
+    <form id="getPizzaForm">
+        <label for="getPizzaId">ID da Pizza:</label>
+        <input type="number" id="getPizzaId" name="id" required>
+        <button type="submit">Buscar Pizza</button>
+    </form>
+
+    <div id="pizzaDetails"></div>
+
+    <hr>
+
+    <!-- Formulário de Atualização de Pizza -->
+    <h2>Atualizar Pizza</h2>
+    <form id="updatePizzaForm">
+        <label for="updatePizzaId">ID da Pizza:</label>
+        <input type="number" id="updatePizzaId" name="id" required>
+        <br><br>
+        <label for="updatePizzaNome">Nome:</label>
+        <input type="text" id="updatePizzaNome" name="nome" required>
+        <br><br>
+        <label for="updatePizzaValor">Valor:</label>
+        <input type="number" id="updatePizzaValor" name="valor" required>
+        <br><br>
+        <button type="submit">Atualizar Pizza</button>
+    </form>
+	
+	<div id="pizzaAtualizada"></div>
+
+    <hr>
+
+    <!-- Deletar Pizza -->
+    <h2>Deletar Pizza</h2>
+    <form id="deletePizzaForm">
+        <label for="deletePizzaId">ID da Pizza:</label>
+        <input type="number" id="deletePizzaId" name="id" required>
+        <button type="submit">Deletar Pizza</button>
+    </form>
+	
+	<div id="pizzadeletada"></div>
+
+    <hr>
+
+    <!-- Listar Pizzas -->
+    <h2>Listar Pizzas</h2>
+    <form id="listPizzasForm">
+        <label for="orderby">Ordenar por:</label>
+        <select id="orderby" name="orderby">
+            <option value="codigo">Código</option>
+            <option value="nome">Nome</option>
+            <option value="valor">Valor</option>
+        </select>
+        <button type="submit">Listar Pizzas</button>
+    </form>
+    
+    <div id="pizzaList"></div>
+
+    <script>
+        // Função para enviar requisições com o Fetch API
+        function sendRequest(url, method, body, callback) {
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            })
+            .then(response => response.json())
+            .then(data => callback(data))
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao enviar requisição');
+            });
+        }
+
+
+        // Formulário para buscar pizza por ID
+        document.getElementById('getPizzaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pizzaId = document.getElementById('getPizzaId').value;
+			//System.out.print(pizzaId);
+            sendRequest('http://localhost:6789/pizza/' + pizzaId, 'GET', null, function(response) {
+                const pizzaDetails = `
+                    <h3>Pizza Encontrada:</h3>
+                    <p>Código: ${response.codigo}</p>
+                    <p>Nome: ${response.nome}</p>
+                    <p>Valor: R$ ${response.valor}</p>
+                `;
+                document.getElementById('pizzaDetails').innerHTML = pizzaDetails;
+            });
+        });
+		
+		// Formulário de inserção de pizza
+		        document.getElementById('insertPizzaForm').addEventListener('submit', function(e) {
+		            e.preventDefault();
+		            const pizzaData = {
+		                codigo: document.getElementById('codigo').value,
+		                nome: document.getElementById('nome').value,
+		                valor: document.getElementById('valor').value
+		            };
+		            sendRequest('http://localhost:6789/pizza/insert', 'POST', pizzaData, function(response) {
+		                alert('Pizza adicionada com sucesso!');
+		            });
+		        });
+
+        // Formulário para atualizar pizza
+        document.getElementById('updatePizzaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pizzaId = document.getElementById('updatePizzaId').value;
+            const pizzaData = {
+                nome: document.getElementById('updatePizzaNome').value,
+                valor: document.getElementById('updatePizzaValor').value
+            };
+			let pizzatHtml;
+			console.log(`varificacao - ${pizzaId} ${pizzaData.nome} ${pizzaData.valor} `);
+			fetch('http://localhost:6789/pizza/update/' + pizzaId)
+					        .then(response => response.json()) // <- agora o back já retorna JSON válido
+					        .then(data => {
+								console.log(`getToUpdate - ${data.id}${data.nome}${data.valor}`);
+					            let pizzatHtml = `<li>ID: ${data.codigo} - 
+									Nome: ${data.nome} - Valor: R$ ${data.valor}</li>`;
+					        })
+					        .catch(error => {
+					            console.error('Erro ao buscar pizza anterior na atualização:', error);
+					            document.getElementById('pizzaAtualizada').innerHTML = '<p style="color:red;">Erro ao buscar pizzas.</p>';
+					        });
+			sendRequest('http://localhost:6789/pizza/update/' + pizzaId, 'POST', pizzaData, function(pizza) {
+				pizzatHtml = `<li>ID: ${pizza.codigo} - 
+					Nome: ${pizza.nome} - Valor: R$ ${pizza.valor}</li>`;
+				});
+			document.getElementById('pizzaAtualizada').innerHTML = pizzatHtml;
+			alert('Pizza atualizada com sucesso!');
+       	});
+
+        // Formulário para deletar pizza
+		document.getElementById('deletePizzaForm').addEventListener('submit', function(e) {
+		    e.preventDefault();
+		    const pizzaId = document.getElementById('deletePizzaId').value;
+			//alert(pizzaId);
+			//alert("http://localhost:6789/pizza/delete/" + pizzaId);
+			
+		    fetch('http://localhost:6789/pizza/delete/' + pizzaId)
+		        .then(response => response.text()) // Lê a resposta como texto
+		        .then(text => {
+					document.getElementById('pizzadeletada').innerHTML = `${text}`;
+		//alert(text); // Exibe a mensagem do servidor
+		        })
+		        .catch(error => {
+		            console.error('Erro ao deletar pizza:', error);
+		            alert('Erro ao deletar pizza.');
+		        });
+		});
+
+
+        // Formulário para listar pizzas
+		document.getElementById('listPizzasForm').addEventListener('submit', function(e) {
+		    e.preventDefault();
+		    const orderby = document.getElementById('orderby').value;
+
+			fetch('/pizza/list/' + orderby)
+			    
+			    .then(data => {
+			        console.log(data); // <- debug
+			        let pizzaListHtml = '<h3>Lista de Pizzas:</h3><ul>';
+			        if (Array.isArray(data)) {
+			            data.forEach(pizza => {
+			                pizzaListHtml += `<li>ID: ${pizza.codigo} - Nome: ${pizza.nome} - Valor: R$ ${pizza.valor}</li>`;
+			            });
+			        } else {
+			            pizzaListHtml += '<li>Nenhuma pizza encontrada ou resposta inválida.</li>';
+			        }
+			        pizzaListHtml += '</ul>';
+			        document.getElementById('pizzaList').innerHTML = pizzaListHtml;
+			    })
+			    .catch(error => {
+			        console.error('Erro ao buscar lista de pizzas:', error);
+			        document.getElementById('pizzaList').innerHTML = '<p style="color:red;">Erro ao buscar pizzas.</p>';
+			    });
+		});
+
+
+    </script>
+</body>
+</html>
