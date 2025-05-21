@@ -1,0 +1,237 @@
+<!--Definições-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+     <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+    <!--Cabeçalho-->
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-12 navbar">
+                <div class="row">
+                    <img src="assets/logo1.png" width="130" height="100" class="logo">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="home.html">Home</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" id="navButton">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="active" href="login.html">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="categorias.html">Categorias e Produtos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="graficos.html">Gráficos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="fornecedores.html">Fornecedores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="quemsomos.html">Quem Somos?</a>
+                                   </li>
+                            </ul>           
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Login-->
+	<div id="conteudoprinc" class="container-fluid main">
+	    <div id="login">
+	        <div class="container">
+	            <div id="login-row" class="row justify-content-center align-items-center">
+	                <div id="login-column" class="col-md-5">
+	                    <div id="login-box" class="col-md-11">
+	                        <form id="login-form" class="form">
+	                            <div>
+	                                <img src="assets/logo2.png" width="100%" alt="..." id="logoLogin">
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="username" class="text-info">CNPJ</label><br>
+	                                <input type="text" name="username" id="cnpj" class="form-control">
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="password" class="text-info">Senha</label><br>
+	                                <input type="password" name="password" id="password" class="form-control">
+	                            </div>
+	                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Criar conta</button>
+	                            <div class="form-group text-right">                                
+	                                <button type="button" class="btn btn-info btn-lg" id="botaoEnviar">Enviar</button>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Criar Conta Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title" id="loginModalLabel">Criação de conta</h5>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <div id="login-box" class="col-md-12">
+	                    <form id="form-criar-conta" class="form">
+	                        <div>
+	                            <img src="assets/logo1.png" width="100%" alt="logo" id="logoNovaConta"> 
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="nome" class="text-info">Nome da empresa</label><br>
+	                            <input type="text" name="txt_nome" id="txt_nome_empresa" class="form-control">
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="login" class="text-info">CNPJ</label><br>
+	                            <input type="text" name="txt_login" id="txt_cnpj" class="form-control">
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="email" class="text-info">E-mail</label><br>
+	                            <input type="text" name="txt_email" id="txt_email" class="form-control">
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="senha" class="text-info">Senha</label><br>
+	                            <input type="password" name="txt_senha" id="txt_senha" class="form-control">
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="senha2" class="text-info">Confirmação de Senha</label><br>
+	                            <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+	                <button type="button" id="btn_salvar_new_user" class="btn btn-info">Salvar</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+  <!--Rodapé-->
+  <footer class="container-fluid p-0 m-0">
+    <div class="text-center p-3" style="background-color:  rgb(232, 158, 32);">
+        <p class="footertext m-0">Copyright 2025: Trabalho Interdiciplinar II: Back-End -
+            <b>ICEI PUC MINAS</b>
+            <div class="container-fluid">
+                <img id="imgRodape" class="navbar-brand" src="assets/logo1.png" alt="logo">
+        </p>
+    </div>
+</footer>
+    <script src="scripts/app.js"></script>
+    <script>
+        
+        // Declara uma função para processar o formulário de login
+		document.getElementById('botaoEnviar').addEventListener('click', processaFormLogin);
+		document.getElementById('btn_salvar_new_user').addEventListener('click', salvaNewUsuario);
+
+		function processaFormLogin(event) {
+		    event.preventDefault();
+		    
+		    const cnpj = document.getElementById('cnpj').value;
+		    const password = document.getElementById('password').value;
+
+		    fetch(`http://localhost:6789/user/${cnpj}/${password}`)
+		        .then(response => response.text())
+		        .then(text => {
+		            let data;
+		            try {
+		                const onceParsed = JSON.parse(text); // Remove aspas extras
+		                data = typeof onceParsed === 'string' ? JSON.parse(onceParsed) : onceParsed;
+		            } catch (e) {
+		                console.error("Erro ao fazer JSON.parse:", e);
+		                alert("Erro no formato de dados do servidor.");
+		                return;
+		            }
+
+		            if (data && typeof data === 'object' && data.cnpj) {
+		                alert('Login OK! Redirecionando...');
+		                // window.location.href = 'home.html';
+		            }
+		        })
+		        .catch(error => {
+		            console.error('Erro ao realizar login:', error);
+		            alert('Erro ao realizar login: ' + error.message);
+		        });
+		}
+
+
+
+		function salvaNewUsuario(event) {
+		    event.preventDefault();
+
+		    const cnpj = document.getElementById('txt_cnpj').value;
+		    const empresa = document.getElementById('txt_nome_empresa').value;
+		    const email = document.getElementById('txt_email').value;
+		    const senha = document.getElementById('txt_senha').value;
+		    const senha2 = document.getElementById('txt_senha2').value;
+
+		    if (senha !== senha2) {
+		        alert('As senhas não conferem.');
+		        return;
+		    }
+
+			const novoUsuario = {
+			    cnpj,
+			    empresa,
+			    email,
+			    senha
+			};
+
+			fetch('http://localhost:6789/user/insert', {
+			    method: 'POST',
+			    headers: {
+			        'Content-Type': 'application/json'
+			    },
+			    body: JSON.stringify(novoUsuario)
+			})
+			.then(response => {
+			    console.log('Resposta recebida:', response);
+			    return response.json().then(data => ({ status: response.status, ok: response.ok, data }));
+			})
+			.then(({ status, ok, data }) => {
+			    console.log('Status:', status);
+			    console.log('Ok:', ok);
+			    console.log('Dados recebidos:', data);
+
+			    if (data && data.message) { // assumindo que MessageResponse tem atributo 'message'
+			        alert(data.message);
+			        if (ok) {
+			            // window.location.href = 'home.html'; // opcional: redirecionar após sucesso
+			        }
+			    } else {
+			        alert('Erro inesperado ao cadastrar usuário.');
+			    }
+			})
+			.catch(error => {
+			    console.error('Erro ao realizar cadastro:', error);
+			    alert('Erro ao realizar cadastro: ' + error.message);
+			});
+
+		}
+
+    
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+</body>
+</html>

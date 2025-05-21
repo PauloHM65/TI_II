@@ -1,0 +1,64 @@
+#active{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#navButton{
+    background-color: #31898d;
+}
+
+.logo{
+    height: 80px;
+    width: 150px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.header{
+    margin-bottom: 15px;
+    background-color: rgb(232, 158, 32);
+}
+
+.main h1{
+    text-align: center;
+}
+
+.nav-item{
+    font-size: 20px;
+    margin-right:24px;
+    margin-left:24px;
+    text-align: center;
+}
+
+p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.rodapeqs p{
+ text-align: center;
+}
+
+#imgRodape{
+    height: 240px;
+    width: 450px;
+}
+
+footer{
+    width: 100%;
+    margin-top: 15px;
+}
+
+#cardProduto{
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 25px;
+    text-align: justify;
+    height: 17rem;
+}
+
+#botaoCriar{
+    width: 350px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

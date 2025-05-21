@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/criarProduto.css">
+    <title>Adicionar Produtos</title>
+</head>
+<body>
+    <!--Cabeçalho-->
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-12 navbar">
+                <div class="row">
+                    <img src="assets/logo1.png" width="130" height="100" class="logo">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="home.html">Home</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" id="navButton">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="login.html">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="active" href="categorias.html">Categorias e Produtos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="graficos.html">Gráficos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="fornecedores.html">Fornecedores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="quemsomos.html">Quem Somos?</a>
+                                   </li>
+                                   <li class="nav-item">
+                                    <a class="nav-link" id="active" href="produto.html">Voltar</a>
+                                   </li>
+                            </ul>           
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="conteudoprinc" class="container-fluid main">
+        <div class="row">
+            <div class="col-12">
+                <h1 style="margin-bottom: 25px;">Adicionar Produto</h1>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <img src="assets/logo2.png" class="img-fluid" alt="..." id="imgProduto">
+        </div>
+        <form class="row g-3">
+            <div class="col-md-6 offset-md-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="validationDefault01" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="validationDefault01" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationDefault02" class="form-label">Marca:</label>
+                        <input type="text" class="form-control" id="validationDefault02" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="validationDefault03" class="form-label">Preço de Compra:</label>
+                        <input type="text" class="form-control" id="validationDefault03" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationDefault04" class="form-label">Preço de Venda:</label>
+                        <input type="text" class="form-control" id="validationDefault04" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-primary" type="submit" id="botaoProduto">Salvar Produto</button>
+                <a href="produto.html" class="btn btn-primary">Ver Produtos</a>
+            </div>
+        </form>
+    </div>
+      <!--Rodapé-->
+      <footer class="container-fluid p-0 m-0">
+        <div class="text-center p-3" style="background-color:  rgb(232, 158, 32);">
+            <p class="footertext m-0">Copyright 2025: Trabalho Interdiciplinar II: Back-End -
+                <b>ICEI PUC MINAS</b>
+                <div class="container-fluid">
+                    <img id="imgRodape" class="navbar-brand" src="assets/logo1.png" alt="logo">
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
