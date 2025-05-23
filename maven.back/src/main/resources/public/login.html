@@ -211,14 +211,16 @@
 			    console.log('Ok:', ok);
 			    console.log('Dados recebidos:', data);
 
-			    if (data && data.message) { // assumindo que MessageResponse tem atributo 'message'
-			        alert(data.message);
-			        if (ok) {
-			            // window.location.href = 'home.html'; // opcional: redirecionar após sucesso
-			        }
-			    } else {
-			        alert('Erro inesperado ao cadastrar usuário.');
-			    }
+				const msg = data.message || data.mensagem;
+
+				if (msg) {
+				    alert(msg);
+				    if (ok) {
+				        // window.location.href = 'home.html'; 
+				    }
+				} else {
+				    alert('Erro inesperado ao cadastrar usuário.');
+				}
 			})
 			.catch(error => {
 			    console.error('Erro ao realizar cadastro:', error);
