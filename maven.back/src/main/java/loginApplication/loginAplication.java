@@ -12,15 +12,15 @@ public class loginAplication {
 	public static void main(String[] args) {
 	    port(6789);
 
-	    staticFiles.location("/public");
+	    //staticFiles.location("/public");
 	    System.out.println(">>> Servidor iniciado...");
 
 
-	    post("/teste", (req, res) -> {
-	        System.out.println(">>> POST /teste chamado");
-	        res.type("application/json");
-	        return "{\"message\":\"rota de teste funcionando\"}";
-	    });
+	   // post("/teste", (req, res) -> {
+	   //     System.out.println(">>> POST /teste chamado");
+	   //     res.type("application/json");
+	   //     return "{\"message\":\"rota de teste funcionando\"}";
+	   // });
 	    
 	    get("/user/:cnpj/:senha", (request, response) -> loginService.get(request, response), gson::toJson);
 	    post("/user/insert", (request, response) -> loginService.insert(request, response), gson::toJson);
